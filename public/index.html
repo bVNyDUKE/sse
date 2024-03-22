@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>Welcome to my test</h1>
+    <ul id="messages"></ul>
+  </body>
+  <script>
+    const eventSource = new EventSource("/events");
+
+    eventSource.onmessage = (event) => {
+      const n = document.createElement("li");
+      n.innerText = event.data;
+      document.querySelector("#messages").appendChild(n);
+    };
+  </script>
+</html>
